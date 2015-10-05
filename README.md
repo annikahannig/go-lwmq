@@ -37,6 +37,9 @@ if err != nil {
 // Send message to consumer
 q.Deliver()
 
+// This message will be instantly delivered
+q.AddMessage(NewMessage("This is a test."))
+
 // Remove consumer
 q.RemoveConsumer(countConsumer)
 
