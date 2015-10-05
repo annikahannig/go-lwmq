@@ -9,10 +9,10 @@ import (
  * or be persisted in a MessageStore for later delivery.
  */
 type Message struct {
-	Payload   interface{}
-	Timestamp time.Time
-	Offline   bool
-	Queue     *Queue
+	Payload   interface{} `json:"payload"`
+	Timestamp time.Time   `json:"timestamp"`
+	Offline   bool        `json:"offline"`
+	Queue     *Queue      `json:"-"`
 }
 
 /**
