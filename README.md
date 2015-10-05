@@ -14,7 +14,7 @@ may persist the message in a database.
 // Create a new consumer
 type LogConsumer struct{}
 
-func (self *LogConsumer) HandleMessage(msg *Message) error {
+func (self *LogConsumer) HandleMessage(msg *lwmw.Message) error {
   log.Println("[", msg.Queue.Id, "] @ ", msg.Timestamp, ": ", msg.Payload)
   return nil
 }
