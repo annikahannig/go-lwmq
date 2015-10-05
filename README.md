@@ -34,7 +34,7 @@ if err != nil {
   log.Fatal("Could not add consumer:", err)
 }
 
-// Send message to consumer
+// Send messages to consumer
 q.Deliver()
 
 // This message will be instantly delivered
