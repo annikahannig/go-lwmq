@@ -16,7 +16,8 @@ type Message struct {
 }
 
 /**
- * Create a new message from a payload string
+ * Create a new message with a payload
+ * and current date
  */
 func NewMessage(payload interface{}) *Message {
 	m := &Message{
