@@ -69,6 +69,12 @@ func (self *Queue) AddMessage(msg *Message) error {
 	// Assign queue to message
 	msg.Queue = self
 
+	// Check if there are any consumers
+	if len(self.consumers) == 0 {
+		// Mark message as offline and deliver later
+		msg.Offline = true
+	}
+
 	err := self.store.AddMessage(msg)
 	if err != nil {
 		return err
