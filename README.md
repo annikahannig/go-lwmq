@@ -25,11 +25,12 @@ func (self *LogConsumer) HandleMessage(msg *Message) error {
 q := lwmq.NewQueue("pb_23")
 
 // Post some messages
-q.AddMessage(NewMessage("This is a test."))
-q.AddMessage(NewMessage("This is another test."))
+q.AddMessage(lwmq.NewMessage("This is a test."))
+q.AddMessage(lwqm.NewMessage("This is another test."))
 
-// Add message consumers
-err := q.AddConsumer(LogConsumer)
+// Add message consumer
+logConsumer := &LogConsumer{}
+err := q.AddConsumer(logConsumer)
 if err != nil {
   log.Fatal("Could not add consumer:", err)
 }
@@ -38,13 +39,13 @@ if err != nil {
 q.Deliver()
 
 // This message will be instantly delivered
-q.AddMessage(NewMessage("This is a test."))
+q.AddMessage(lwmq.NewMessage("This is a test."))
 
 // Remove consumer
-q.RemoveConsumer(countConsumer)
+q.RemoveConsumer(logConsumer)
 
 // This message will be saved in the store
-q.AddMessage(NewMessage("This is yet another test."))
+q.AddMessage(lwmq.NewMessage("This is yet another test."))
 ```
 
 # License
