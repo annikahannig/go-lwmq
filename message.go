@@ -9,7 +9,7 @@ import (
  * or be persisted in a MessageStore for later delivery.
  */
 type Message struct {
-	Payload   string
+	Payload   interface{}
 	Timestamp time.Time
 	Offline   bool
 	Queue     *Queue
@@ -18,7 +18,7 @@ type Message struct {
 /**
  * Create a new message from a payload string
  */
-func NewMessage(payload string) *Message {
+func NewMessage(payload interface{}) *Message {
 	m := &Message{
 		Payload:   payload,
 		Timestamp: time.Now(),
