@@ -5,6 +5,7 @@ package lwmq
  * implements a simple pubsub model and can persisted
  * by using a store.
  *
+ * (c) 2015 Matthias Hannig
  */
 
 /**
