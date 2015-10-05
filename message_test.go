@@ -1,6 +1,8 @@
 package lwmq
 
 import (
+	"encoding/json"
+	"fmt"
 	"testing"
 	"time"
 )
@@ -22,4 +24,11 @@ func TestMessage(t *testing.T) {
 		t.Error("Expected message not to be older than a millisecond")
 	}
 
+	// Test serialization
+	data, err := json.Marshal(msg)
+	if err != nil {
+		t.Error(err)
+	}
+
+	fmt.Println(string(data))
 }
